@@ -34,9 +34,9 @@ struct ContentView: View {
         //A:Actually it could!
         //VStack is a view that takes in one argument which is a function that returns a bag of lego view that it can arrange
         HStack{
-            CardView()
-            CardView()
-            CardView()
+            CardView(isFaceUp: true)
+            CardView(isFaceUp: false)
+            CardView(isFaceUp: true)
             CardView()
         }
         .foregroundColor(.orange)//scoping of a view modifer matters
@@ -53,18 +53,24 @@ struct ContentView: View {
 
 
 struct CardView: View{
+    var isFaceUp: Bool = true //default value is false
     var body: some View{
         ZStack(content: {
             //Example of creating an Image struct that behaves like a view
             //The Image struct argument is "globe" with a named parameter systemName
             //Example of creating a Text struct
             //Text view parameters is the text hello cs... but the parameter doesnt have or need a name!
-            RoundedRectangle(cornerRadius: 12)
-                .foregroundColor(.white)
-            RoundedRectangle(cornerRadius: 12)
-                .strokeBorder(lineWidth: 2)
-                Text("👻").font(.largeTitle) //function call in swift
-            //Both above structs act as a "View" ---> can stack them
+            if isFaceUp {
+                RoundedRectangle(cornerRadius: 12)
+                    .foregroundColor(.white)
+                RoundedRectangle(cornerRadius: 12)
+                    .strokeBorder(lineWidth: 2)
+                    Text("👻").font(.largeTitle) //function call in swift
+                //Both above structs act as a "View" ---> can stack them
+            } else {
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(.green)
+            }
         })
     }
 }
