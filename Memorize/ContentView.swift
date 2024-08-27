@@ -41,7 +41,6 @@ struct ContentView: View {
             //Example of creating a Text struct
             //Text view parameters is the text hello cs... but the parameter doesnt have or need a name!
             Text("Hello, CS 193P!").padding() //function call in swift
-            //testing
             //Both above structs act as a "View" ---> can stack them
         })
         .font(.largeTitle) //everything in the vstack got the modifier
